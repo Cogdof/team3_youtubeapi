@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import Greeting from './components/Greeting'
+// import logo from './logo.svg';
+import YoutubeSearchResult from './components/YoutubeSearchResult'
 import './App.css';
 
 class App extends Component {
@@ -17,12 +17,6 @@ class App extends Component {
   componentDidMount(){    //이 컴포넌트가 정상적으로 작동하면 componentDidMount() 호출
     //fetch ployfil
 
-
-    /*setTimeout(()=>{
-      this.setState({
-        name: 'World'
-      })
-    },3000);*/
   }
   handleChange =(e) => {
     console.log(e.target.value);
@@ -32,9 +26,9 @@ class App extends Component {
 
     console.log(this.state.value);
   }
-  handleClick = () => {
+  searchButtonClick = () => {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
-    console.log('keypress####');
+
     let params = {
       
       q:this.state.value,
@@ -43,13 +37,30 @@ class App extends Component {
     url.search = new URLSearchParams(params);
     fetch(url)
       .then(res => {
-      console.log(res);
+      // console.log(res);
       return res.json();
       })
       .then(data =>{
-        console.log(data);
+
+
+        var searchedItems = data.items;
+        var searchedParsedItems = [];
+
+        for (var i=0; i<searchedItems.length; i++){
+          var parsedItem = {};
+          parsedItem.title = searchedItems[i].snippet.title;
+          parsedItem.videoLink = "https://www.youtube.com/watch?v="+searchedItems[i].id.videoId;
+          parsedItem.thumbnailsLink = searchedItems[i].snippet.thumbnails.default;
+          // 필요한 정보들 추가한다
+          searchedParsedItems.push(parsedItem);
+        }
+
+        for(var i=0; i<searchedItems.length; i++){
+          console.log(searchedParsedItems[i]);
+        }
+
          this.setState({
-             data: data
+          searchedParsedItems:searchedParsedItems
         })
     })
   }
@@ -58,10 +69,19 @@ class App extends Component {
   }
   render() {    //state가 변경되면 항상 마지막으로 호출
     //App.js의 state를 셋팅해서 Greeting.js에게 props로 전달
-    const name = this.state.name;
-    const data = this.state.data;
+
+    var searchedParsedItems = this.state.searchedParsedItems;
+    if(!searchedParsedItems){
+      searchedParsedItems = [];
+      searchedParsedItems.push({});
+      searchedParsedItems.push({});
+      searchedParsedItems.push({});
+      searchedParsedItems.push({});
+      searchedParsedItems.push({});
+    }
 
     return (
+
       <div className="App">
         <div id="container">
           <header>
@@ -69,32 +89,23 @@ class App extends Component {
             <p>Search all YouTube Videos</p>
           </header>
           <section>
+
             <div id="search-form" >
               <div className="fieldcontainer">
-                <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube" onChange = {this.handleChange} onKeyPress = {this.handleKeyPress}/>
-                <input type="submit" name="search-btn" className="search-btn" value="검색" onClick ={this.handleClick}/>
+                <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube"/>
+                <input type="submit" name="search-btn" className="search-btn" value="검색" onClick ={this.searchButtonClick}/>
               </div>
             </div>
 
-            <ul id="results" className="item-list">
-              <li className="item">
-                <a href="http://www.youtube.com/watch?v=e3Nl_TCQXuw" target="_blank">
-                  <h3>Beauty and the Beast – US Official Final Trailer</h3>
-                  <div className="image-wrapper">
-                    <img src="https://i.ytimg.com/vi/e3Nl_TCQXuw/hqdefault.jpg"/>
-                  </div>
-                  <div className="description">
-                    <small>By <span className="channel-title">Disney Movie Trailers</span> on <time>2017-01-31T02:44:39.000Z</time></small>
-                    <p>The final trailer for Beauty and the Beast is here On March 17, rediscover a tale as old as time. Get your tickets now at BeOurGuest.com -- Disney's “Beauty ...</p>
-                  </div>
-                </a>
-              </li>
-            </ul>
+            <YoutubeSearchResult searchedParsedItems={searchedParsedItems} />
+
           </section>
         </div>
       </div>
     );
   }
+
+  
 }
 
 export default App;
