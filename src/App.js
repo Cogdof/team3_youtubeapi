@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import YoutubeSearchResult from './components/YoutubeSearchResult'
 import './App.css';
 
@@ -30,7 +29,8 @@ class App extends Component {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
 
     let params = {
-      q:this.state.value,
+      
+      q:document.getElementById("query").value,
       part:'snippet'
     }
     url.search = new URLSearchParams(params);
@@ -40,7 +40,6 @@ class App extends Component {
       return res.json();
       })
       .then(data =>{
-
 
         var searchedItems = data.items;
         var searchedParsedItems = [];
@@ -91,8 +90,14 @@ class App extends Component {
 
             <div id="search-form" >
               <div className="fieldcontainer">
-                <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube"/>
-                <input type="submit" name="search-btn" className="search-btn" value="검색" onClick ={this.searchButtonClick}/>
+
+                <form action="#" name="youtube-search">
+                  <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube"/>  
+                  <input type="submit" name="search-btn" className="search-btn" value="검색" onClick ={this.searchButtonClick}/>
+                </form>
+
+                {/* <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube"/>
+                <input type="submit" name="search-btn" className="search-btn" value="검색" onClick ={this.searchButtonClick}/> */}
               </div>
             </div>
 
