@@ -29,7 +29,7 @@ class App extends Component {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
 
     let params = {
-      
+      key:"AIzaSyD9orhERkRx_Emg7esnEGxWNBJJvujbvvY",
       q:document.getElementById("query").value,
       part:'snippet'
     }
@@ -90,14 +90,8 @@ class App extends Component {
 
             <div id="search-form" >
               <div className="fieldcontainer">
-
-                <form action="#" name="youtube-search">
                   <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube"/>  
                   <input type="submit" name="search-btn" className="search-btn" value="검색" onClick ={this.searchButtonClick}/>
-                </form>
-
-                {/* <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube"/>
-                <input type="submit" name="search-btn" className="search-btn" value="검색" onClick ={this.searchButtonClick}/> */}
               </div>
             </div>
 
