@@ -29,7 +29,7 @@ class App extends Component {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
 
     let params = {
-      key:"AIzaSyD9orhERkRx_Emg7esnEGxWNBJJvujbvvY",
+      
       q:document.getElementById("query").value,
       part:'snippet'
     }
