@@ -30,7 +30,6 @@ class App extends Component {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
 
     let params = {
-      
       q:this.state.value,
       part:'snippet'
     }
@@ -50,7 +49,7 @@ class App extends Component {
           var parsedItem = {};
           parsedItem.title = searchedItems[i].snippet.title;
           parsedItem.videoLink = "https://www.youtube.com/watch?v="+searchedItems[i].id.videoId;
-          parsedItem.thumbnailsLink = searchedItems[i].snippet.thumbnails.default;
+          parsedItem.thumbnailsLink = searchedItems[i].snippet.thumbnails.default.url;
           // 필요한 정보들 추가한다
           searchedParsedItems.push(parsedItem);
         }
