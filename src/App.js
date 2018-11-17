@@ -36,7 +36,7 @@ class App extends Component {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
     console.log('keypress####');
     let params = {
-      key:"AIzaSyC9mCYgwT085SwLlsS1t7W0dQNSpou9kW4 ",
+      
       q:this.state.value,
       part:'snippet'
     }
