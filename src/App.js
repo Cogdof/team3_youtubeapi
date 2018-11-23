@@ -29,7 +29,7 @@ class App extends Component {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
 
     let params = {
-      key:"AIzaSyD9orhERkRx_Emg7esnEGxWNBJJvujbvvY",//보안을 위해 지울예쩡
+    //보안을 위해 키 값은 제외
       q:document.getElementById("query").value,
       part:'snippet'
     }
@@ -100,7 +100,9 @@ class App extends Component {
               </div>
             </div>
 
-            <YoutubeSearchResult searchedParsedItems={searchedParsedItems} />
+              <YoutubeSearchResult searchedParsedItems={searchedParsedItems} />
+
+
 
           </section>
         </div>

@@ -9,39 +9,97 @@ class YoutubeSerachResult extends Component {
     const videoIds = [];
 
     return (
-
       <div>
 
-        <p><a href={searchedParsedItems[0].videoLink}>{searchedParsedItems[0].title}</a></p>
-        <a href={searchedParsedItems[0].videoLink}><img src={searchedParsedItems[0].thumbnailsLink}/></a>
-        <p>{searchedParsedItems[0].channelTitle}  {searchedParsedItems[0].publishedAt}</p>
-        <p> {searchedParsedItems[0].description} </p>
 
+<ul id="results" class="item-list">
+  <li class="item">
+   <a href={searchedParsedItems[0].videoLink} target="_blank">
+   <h3>{searchedParsedItems[0].title}</h3>
+   <div class="image-wrapper">
+   <img src={searchedParsedItems[0].thumbnailsLink}/>
 
-        <p><a href={searchedParsedItems[1].videoLink}>{searchedParsedItems[1].title}</a></p>
-        <a href={searchedParsedItems[1].videoLink}><img src={searchedParsedItems[1].thumbnailsLink}/></a>
-        <p>{searchedParsedItems[1].channelTitle}  {searchedParsedItems[1].publishedAt}</p>
-        <p> {searchedParsedItems[1].description} </p>
+     </div>
 
+      <div class="description">
+      <small><span class="channel-title"> {searchedParsedItems[0].channelTitle}</span>  {searchedParsedItems[0].publishedAt}</small>
+      <p> {searchedParsedItems[0].description} </p>
+    </div>
+    </a>
+ </li>
+</ul>
 
-        <p><a href={searchedParsedItems[2].videoLink}>{searchedParsedItems[2].title}</a></p>
-        <a href={searchedParsedItems[2].videoLink}><img src={searchedParsedItems[2].thumbnailsLink}/></a>
-        <p>{searchedParsedItems[2].channelTitle}  {searchedParsedItems[2].publishedAt}</p>
-        <p> {searchedParsedItems[2].description} </p>
+<ul id="results" class="item-list">
+  <li class="item">
+   <a href={searchedParsedItems[1].videoLink} target="_blank">
+   <h3>{searchedParsedItems[1].title}</h3>
+   <div class="image-wrapper">
+   <img src={searchedParsedItems[1].thumbnailsLink}/>
 
+     </div>
 
-        <p><a href={searchedParsedItems[3].videoLink}>{searchedParsedItems[3].title}</a></p>
-        <a href={searchedParsedItems[3].videoLink}><img src={searchedParsedItems[3].thumbnailsLink}/></a>
-        <p>{searchedParsedItems[3].channelTitle}  {searchedParsedItems[3].publishedAt}</p>
-        <p> {searchedParsedItems[3].description} </p>
+      <div class="description">
+      <small><span class="channel-title"> {searchedParsedItems[1].channelTitle}</span>  {searchedParsedItems[1].publishedAt}</small>
+      <p> {searchedParsedItems[1].description} </p>
+    </div>
+    </a>
+ </li>
+</ul>
 
+<ul id="results" class="item-list">
+  <li class="item">
+   <a href={searchedParsedItems[2].videoLink} target="_blank">
+   <h3>{searchedParsedItems[2].title}</h3>
+   <div class="image-wrapper">
+   <img src={searchedParsedItems[2].thumbnailsLink}/>
 
-        <p><a href={searchedParsedItems[4].videoLink}>{searchedParsedItems[4].title}</a></p>
-        <a href={searchedParsedItems[4].videoLink}><img src={searchedParsedItems[4].thumbnailsLink}/></a>
-        <p>{searchedParsedItems[4].channelTitle}  {searchedParsedItems[4].publishedAt}</p>
-        <p> {searchedParsedItems[4].description} </p>
+     </div>
+
+      <div class="description">
+      <small><span class="channel-title"> {searchedParsedItems[2].channelTitle}</span>  {searchedParsedItems[2].publishedAt}</small>
+      <p> {searchedParsedItems[2].description} </p>
+    </div>
+    </a>
+ </li>
+</ul>
+
+<ul id="results" class="item-list">
+  <li class="item">
+   <a href={searchedParsedItems[3].videoLink} target="_blank">
+   <h3>{searchedParsedItems[3].title}</h3>
+   <div class="image-wrapper">
+   <img src={searchedParsedItems[3].thumbnailsLink}/>
+
+     </div>
+
+      <div class="description">
+      <small><span class="channel-title"> {searchedParsedItems[3].channelTitle}</span>  {searchedParsedItems[3].publishedAt}</small>
+      <p> {searchedParsedItems[3].description} </p>
+    </div>
+    </a>
+ </li>
+</ul>
+
+<ul id="results" class="item-list">
+  <li class="item">
+   <a href={searchedParsedItems[4].videoLink} target="_blank">
+   <h3>{searchedParsedItems[4].title}</h3>
+   <div class="image-wrapper">
+   <img src={searchedParsedItems[4].thumbnailsLink}/>
+
+     </div>
+
+      <div class="description">
+      <small><span class="channel-title"> {searchedParsedItems[4].channelTitle}</span>  {searchedParsedItems[4].publishedAt}</small>
+      <p> {searchedParsedItems[4].description} </p>
+    </div>
+    </a>
+ </li>
+</ul>
+
 
       </div>
+
 
     );
 

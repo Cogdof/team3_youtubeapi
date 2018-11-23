@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 body {
   font-family: "Dotum";
@@ -40,6 +40,7 @@ section {
 #search-form {
   display: block;
   margin-bottom: 15px;
+    text-align: center;
 }
 
 #search-form .fieldcontainer {
