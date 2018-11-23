@@ -29,7 +29,7 @@ class App extends Component {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
 
     let params = {
-      
+      key:"AIzaSyD9orhERkRx_Emg7esnEGxWNBJJvujbvvY",//보안을 위해 지울예쩡
       q:document.getElementById("query").value,
       part:'snippet'
     }
@@ -45,10 +45,15 @@ class App extends Component {
         var searchedParsedItems = [];
 
         for (var i=0; i<searchedItems.length; i++){
+
           var parsedItem = {};
           parsedItem.title = searchedItems[i].snippet.title;
           parsedItem.videoLink = "https://www.youtube.com/watch?v="+searchedItems[i].id.videoId;
           parsedItem.thumbnailsLink = searchedItems[i].snippet.thumbnails.default.url;
+          parsedItem.channelTitle = searchedItems[i].snippet.channelTitle;
+          parsedItem.publishedAt = searchedItems[i].snippet.publishedAt;
+          parsedItem.description = searchedItems[i].snippet.description;
+
           // 필요한 정보들 추가한다
           searchedParsedItems.push(parsedItem);
         }
@@ -90,7 +95,7 @@ class App extends Component {
 
             <div id="search-form" >
               <div className="fieldcontainer">
-                  <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube"/>  
+                  <input type="search" id="query" name="query" className="search-field" placeholder="Search YouTube"/>
                   <input type="submit" name="search-btn" className="search-btn" value="검색" onClick ={this.searchButtonClick}/>
               </div>
             </div>
@@ -103,7 +108,7 @@ class App extends Component {
     );
   }
 
-  
+
 }
 
 export default App;
