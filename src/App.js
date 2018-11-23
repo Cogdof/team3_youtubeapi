@@ -29,7 +29,7 @@ class App extends Component {
     let url = new URL('https://www.googleapis.com/youtube/v3/search');
 
     let params = {
-    //보안을 위해 키 값은 제외
+
       q:document.getElementById("query").value,
       part:'snippet'
     }
